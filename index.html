@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Registration Form</title>
+    <style>
+        /* Modern Aesthetics Base */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        h1 {
+            color: #111827;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* Centered Form Wrapper Box */
+        form, .success-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Hide success card by default */
+        .success-card {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .success-card h2 {
+            color: #10b981;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* Clean Section Breakdown */
+        fieldset {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 30px;
+        }
+
+        legend {
+            font-weight: 600;
+            color: #4f46e5;
+            padding: 0 10px;
+            font-size: 1.15rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #4b5563;
+            margin-bottom: 6px;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background-color: #f9fafb;
+        }
+
+        .selection-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .selection-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+        }
+
+        /* High-Contrast 3D Bold Submit Button Box */
+        .submit-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: #10b981; 
+            color: white;
+            font-size: 18px;
+            font-weight: 900;          
+            padding: 14px 40px;
+            display: inline-block;
+            width: 100%;
+            max-width: 280px;          
+            
+            border: 2px solid #059669; 
+            border-radius: 8px;
+            box-shadow: 0 4px 0px #047857; 
+            
+            cursor: pointer;
+            transition: all 0.1s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #34d399;
+            box-shadow: 0 4px 0px #059669;
+        }
+
+        input[type="submit"]:active {
+            box-shadow: 0 0px 0px #047857;
+            transform: translateY(4px); 
+        }
+
+        .reset-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        input[type="reset"] {
+            background-color: #ef4444; 
+            color: white;
+            padding: 6px 14px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="page-title">Course Registration Form</h1>
+    
+    <!-- JavaScript intercepts the form submit right here -->
+    <form id="regForm" onsubmit="showSuccess(event)">
+        <fieldset>
+            <legend>Personal Details</legend>
+            <div class="form-group">
+                <label for="fn">First Name</label>
+                <input type="text" id="fn" name="FN" placeholder="Ex: Neha" maxlength="10">
+            </div>
+            <div class="form-group">
+                <label for="ln">Surname</label>
+                <input type="text" id="ln" name="LN" placeholder="Ex: Verma">
+            </div>
+            <div class="form-group">
+                <label for="mob">Mobile Number</label>
+                <input type="tel" id="mob" name="mob" placeholder="983.897.0726">
+            </div>
+            <div class="form-group">
+                <label for="mail">Email Address</label>
+                <input type="email" id="mail" name="mail" placeholder="Ex: neha@gmail.com">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password</label>
+                <input type="password" id="pwd" name="pwd">
+            </div>
+            <div class="form-group">
+                <label for="cpwd">Confirm Password</label>
+                <input type="password" id="cpwd" name="cpwd">
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob">
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="selection-group">
+                    <label class="selection-item" for="f"><input type="radio" name="gender" value="F" id="f"> Female</label>
+                    <label class="selection-item" for="m"><input type="radio" name="gender" value="M" id="m"> Male</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="country">Select Country</label>
+                <select name="country" id="country">
+                    <option value="India">INDIA</option>
+                    <option value="USA">USA</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pic">Upload Picture</label>
+                <input type="file" id="pic" name="pic">
+            </div>
+            <div class="reset-container">
+                <input type="reset" value="Clear Details">
+            </div>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Course Details</legend>
+            <div class="form-group">
+                <label for="course">Select Course</label>
+                <select name="Course" id="course">
+                    <option value="PFS">Python Full Stack</option>
+                    <option value="JFS">Java Full Stack</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Delivery Mode</label>
+                <div class="selection-group">
+                    <label class="selection-item" for="on"><input type="checkbox" name="model" value="ON" id="on"> Online</label>
+                    <label class="selection-item" for="off"><input type="checkbox" name="model" value="OFF" id="off"> Offline</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="comments">Comments</label>
+                <textarea id="comments" name="comments" rows="4"></textarea>
+            </div>
+            <div class="submit-container">
+                <input type="submit" value="Submit">
+            </div>
+        </fieldset>
+    </form>
+
+    <!-- Hidden success card that lives in the same file -->
+    <div id="successCard" class="success-card">
+        <h2>✔ Thank You</h2>
+        <p>Your course registration form has been submitted successfully .</p>
+    </div>
+
+    <script>
+        function showSuccess(event) {
+            event.preventDefault(); // Stops the browser from loading a new page
+            document.getElementById('regForm').style.display = 'none'; // Hides the form
+            document.getElementById('page-title').style.display = 'none'; // Hides main title
+            document.getElementById('successCard').style.display = 'block'; // Shows success block
+        }
+    </script>
+</body>
+</html>
